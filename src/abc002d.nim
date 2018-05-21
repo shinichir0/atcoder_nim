@@ -1,5 +1,6 @@
 import strutils
 import sequtils
+import algorithm
 import math
 
 
@@ -12,7 +13,6 @@ for i in 0 ..< m:
   input = stdin.readLine.split.map(parseInt)
   relation.add(input)
 
-var tmp, op: int
 var group: seq[int]
 var max_num = 1
 var known: seq[bool]
@@ -21,12 +21,9 @@ var count: int
 for i in 0 ..< int(pow(2.0, float(n))):
   group = newSeq[int]()
   flag = false
-  tmp = i
-  for p in 1 .. n:
-    op = tmp mod 2
-    tmp = tmp div 2
-    if op == 0:
-      group.add(p)
+  for p, op in toBin(i, n).reversed:
+    if op == '1':
+      group.add(p+1)
   #echo("group: ", group)
   if max_num < group.len:
     for g in group:

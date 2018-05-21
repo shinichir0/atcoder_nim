@@ -6,7 +6,7 @@ import math
 var s = stdin.readLine
 var index = -1
 var total: int
-var answer: string
+var answer: seq[char]
 
 var count = int(pow(2.0, 4.0))
 var tmp: int
@@ -34,16 +34,13 @@ for i in 0 ..< count:
 
 tmp = index
 for i in 0 ..< 4:
-  answer.add($s[i])
+  stdout.write(s[i])
   op = tmp mod 2
   tmp = tmp div 2
   if i == 3:
-    answer.add($'=')
-    answer.add($'7')
+    echo("=7")
     break
   if op == 0:
-    answer.add($'+')
+    stdout.write('+')
   else:
-    answer.add($'-')
-
-echo(answer)
+    stdout.write('-')
