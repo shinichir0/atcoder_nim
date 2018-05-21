@@ -34,16 +34,16 @@ for i in 0 ..< count:
 
 tmp = index
 for i in 0 ..< 4:
-  answer.add(s[i])
+  answer.add($s[i])
   op = tmp mod 2
   tmp = tmp div 2
   if i == 3:
-    answer.add('=')
-    answer.add('7')
+    answer.add($'=')
+    answer.add($'7')
     break
   if op == 0:
-    answer.add('+')
+    answer.add($'+')
   else:
-    answer.add('-')
+    answer.add($'-')
 
 echo(answer)
