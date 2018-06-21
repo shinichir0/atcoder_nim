@@ -20,16 +20,15 @@ for i in 0 ..< h:
   grid.add(tmp)
 
 proc search(x, y: int) =
-  if x < 0 or w <= x or y < 0 or h <= y or grid[y][x] == '#':
+  if x < 0 or x >= w or y < 0 or y >= h or grid[y][x] == '#':
     return
-  elif reached[y][x]:
+  if reached[y][x]:
     return
-  else:
-    reached[y][x] = true
-    search(x + 1, y)
-    search(x - 1, y)
-    search(x, y + 1)
-    search(x, y - 1)
+  reached[y][x] = true
+  search(x + 1, y)
+  search(x - 1, y)
+  search(x, y + 1)
+  search(x, y - 1)
 
 search(s[0], s[1])
 if reached[g[0]][g[1]]:
